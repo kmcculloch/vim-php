@@ -1,4 +1,4 @@
-# vim-symfony
+# kmcculloch/vim-php
 
 PHP vim integration.
 
