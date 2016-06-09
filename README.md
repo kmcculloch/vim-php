@@ -14,31 +14,27 @@ Review which composer packages are installed:
 
 `composer global show`
 
-If `PHP_CodeSniffer` is not among them, install it and the two external PHP
-standards for Symfony2 and Drupal:
+If `PHP_CodeSniffer` is not among them, install it and the external PHP
+standards for Symfony2, PHPSpec and Drupal:
 
-`composer global require "squizlabs/php_codesniffer=*"`
+```
+composer global require "squizlabs/php_codesniffer=*"
 
-`composer global require escapestudios/symfony2-coding-standard:~2.0`
+composer global require escapestudios/symfony2-coding-standard:~2.0
 
-`composer global require drupal/coder`
+composer global require kmcculloch/phpspec-code-sniffer:~0.1@dev
 
-Add Symphony2 and Drupal to the phpcs installed standards:
+composer global require drupal/coder
+```
 
-`phpcs --config-set installed_paths /home/kevin/.composer/vendor/escapestudios/symfony2-coding-standard,/home/kevin/.composer/vendor/drupal/coder/coder_sniffer`
+Tell phpcs where to find the standards:
+
+```
+phpcs --config-set installed_paths ~/.composer/vendor/escapestudios/symfony2-coding-standard,~/.composer/vendor/kmcculloch/phpspec-code-sniffer/,~/.composer/vendor/drupal/coder/coder_sniffer
+```
 
 Make sure they are there:
 
-`phpcs -i`
-
-## Toggle standards
-
-To toggle between PHPCS standards by hand, use:
-
-`phpcs --config-set default_standard Symfony2`
-
-`phpcs --config-set default_standard Drupal`
-
-The function VimPhpBufWrite() in plugin/vim_php.vim will toggle this
-configuration any time a file is written so that the checker uses the right
-standard.
+```
+phpcs -i
+```
